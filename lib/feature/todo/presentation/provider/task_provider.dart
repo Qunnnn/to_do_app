@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/feature/todo/data/model/task_model.dart';
 import 'package:todo_app/feature/todo/domain/entities/task_entity.dart';
-import 'package:todo_app/feature/todo/domain/usecases/update_task.dart';
 import 'package:todo_app/feature/todo/domain/usecases/usecases.dart';
 
 class TaskProvider extends ChangeNotifier {

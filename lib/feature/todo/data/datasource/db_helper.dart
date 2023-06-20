@@ -14,9 +14,12 @@ class DbHelper {
       _db = await openDatabase(
         join(await getDatabasesPath(), 'tasks.db'),
         version: _version,
-        onCreate: (db, version) {
-          return db.execute(
+        onCreate: (db, version) async {
+          await db.execute(
             'CREATE TABLE $_tableName(id INTEGER PRIMARY KEY, title TEXT, note TEXT , date TEXT , startTime TEXT , endTime TEXT, remind INTEGER , repeat TEXT , color INTEGER , isCompleted INTEGER)',
+          );
+          await db.execute(
+            'CREATE TABLE themeTable(isDarkmode INTERGER)',
           );
         },
       );
