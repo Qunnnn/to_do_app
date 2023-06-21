@@ -9,13 +9,14 @@ class MyTextFormFiled extends StatelessWidget {
   final String hint;
   final Widget? widget;
   final TextEditingController? controller;
-  const MyTextFormFiled({
-    super.key,
-    required this.subTitle,
-    required this.hint,
-    this.controller,
-    this.widget,
-  });
+  final bool? expand;
+  const MyTextFormFiled(
+      {super.key,
+      required this.subTitle,
+      required this.hint,
+      this.controller,
+      this.widget,
+      this.expand});
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +42,8 @@ class MyTextFormFiled extends StatelessWidget {
               Expanded(
                   child: TextFormField(
                 readOnly: widget == null ? false : true,
+                expands: expand ?? false,
+                maxLines: expand == true ? null : 1,
                 cursorColor:
                     themeMode.themeStatus ? Colors.white : Colors.black,
                 cursorHeight: AppLayout.getHeight(context: context, pixel: 25),
@@ -51,9 +54,14 @@ class MyTextFormFiled extends StatelessWidget {
                       color: themeMode.themeStatus ? Colors.white : Colors.grey,
                       fontSize:
                           AppLayout.getHeight(context: context, pixel: 15)),
-                  contentPadding: EdgeInsets.only(
-                      left: AppLayout.getWidth(context: context, pixel: 10),
-                      bottom: AppLayout.getHeight(context: context, pixel: 10)),
+                  contentPadding: expand == true
+                      ? EdgeInsets.only(
+                          left: AppLayout.getWidth(context: context, pixel: 10),
+                          top: AppLayout.getHeight(context: context, pixel: 8))
+                      : EdgeInsets.only(
+                          left: AppLayout.getWidth(context: context, pixel: 10),
+                          bottom:
+                              AppLayout.getHeight(context: context, pixel: 10)),
                   border: InputBorder.none,
                 ),
               )),

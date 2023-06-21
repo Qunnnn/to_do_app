@@ -62,6 +62,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
               subTitle: 'Title',
               hint: 'Enter title here.',
               controller: titleController,
+              expand: true,
             ),
             SizedBox(
               height: AppLayout.getHeight(context: context, pixel: 10),
@@ -70,6 +71,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
               subTitle: 'Note',
               hint: 'Enter Note here.',
               controller: noteController,
+              expand: true,
             ),
             SizedBox(
               height: AppLayout.getHeight(context: context, pixel: 10),
