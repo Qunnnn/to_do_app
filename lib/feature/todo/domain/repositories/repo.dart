@@ -6,4 +6,5 @@ abstract class TaskRepo {
   Future<int> insertTask(TaskModel? task);
   Future<int> deleteTask(TaskModel? task);
   Future<int> updateTask(int id);
+
 }

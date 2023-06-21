@@ -6,7 +6,11 @@ import '../../feature/todo/presentation/provider/provider.dart';
 class AppGlobalProviders {
   static get globalProviders => [
         ChangeNotifierProvider(
-          create: (context) => ThemeService(),
+          create: (context) => ThemeService(
+              readStatusThemeMode: ReadStatusThemeMode(
+                  themeRepo: ThemeRepoIml(dbHelper: DbHelper())),
+              writeStatusThemeMode: WriteStatusThemeMode(
+                  themeRepo: ThemeRepoIml(dbHelper: DbHelper()))),
         ),
         ChangeNotifierProvider(
           create: (context) => TaskProvider(

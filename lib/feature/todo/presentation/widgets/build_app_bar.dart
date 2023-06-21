@@ -18,7 +18,7 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
             themeMode.toggleTheme(themeMode.isDarkMode);
           },
           child: Icon(
-            themeMode.isDarkMode
+            themeMode.themeStatus
                 ? Icons.nightlight_round_outlined
                 : Icons.wb_sunny_outlined,
             color: Theme.of(context).iconTheme.color,

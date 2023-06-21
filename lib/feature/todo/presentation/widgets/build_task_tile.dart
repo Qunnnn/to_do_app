@@ -75,7 +75,7 @@ class TaskTile extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border(
                 left: BorderSide(
-                    color: themeMode.isDarkMode ? Colors.white : Colors.black),
+                    color: themeMode.themeStatus ? Colors.white : Colors.black),
               ),
               color: Colors.transparent,
             ),

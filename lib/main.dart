@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/core/appProvider/app_global_providers.dart';
 import 'package:todo_app/feature/todo/data/datasource/db_helper.dart';
-import 'package:todo_app/feature/todo/presentation/provider/provider.dart';
 import 'constant/theme.dart';
-import 'feature/todo/presentation/screens/screens.dart';
+import 'feature/todo/presentation/presentation.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,16 +16,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     return MultiProvider(
       providers: AppGlobalProviders.globalProviders,
       builder: (context, child) {
-        final themeModeProvider = Provider.of<ThemeService>(context);
+           final themeMode = Provider.of<ThemeService>(context);
+           themeMode.getThemeStatus();
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: Themes.lightTheme,
           darkTheme: Themes.darkTheme,
-          themeMode: themeModeProvider.themeMode,
+          themeMode:   themeMode.themeStatus? ThemeMode.dark: ThemeMode.light ,
           home: const HomePage(),
         );
       },

@@ -25,7 +25,7 @@ class BuildTaskBar extends StatelessWidget {
                 DateFormat.yMMMMd().format(DateTime.now()).toString(),
                 style: AppTextStyle.subHeadingStyle.copyWith(
                     color:
-                        themeMode.isDarkMode ? Colors.grey[400] : Colors.grey),
+                        themeMode.themeStatus ? Colors.grey[400] : Colors.grey),
               ),
               const Text(
                 'Today',

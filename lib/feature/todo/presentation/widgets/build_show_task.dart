@@ -51,18 +51,18 @@ class _ShowTaskState extends State<ShowTask> {
       DateTime.now(),
       height: 100,
       initialSelectedDate: DateTime.now(),
-      selectionColor: themeMode.isDarkMode ? Colors.indigo : Colors.teal,
+      selectionColor: themeMode.themeStatus ? Colors.indigo : Colors.teal,
       dateTextStyle: AppTextStyle.contentStyle.copyWith(
         fontSize: 20,
-        color: themeMode.isDarkMode ? Colors.white : Colors.black,
+        color: themeMode.themeStatus ? Colors.white : Colors.black,
       ),
       dayTextStyle: AppTextStyle.contentStyle.copyWith(
         fontSize: 12,
-        color: themeMode.isDarkMode ? Colors.white : Colors.black,
+        color: themeMode.themeStatus ? Colors.white : Colors.black,
       ),
       monthTextStyle: AppTextStyle.contentStyle.copyWith(
         fontSize: 12,
-        color: themeMode.isDarkMode ? Colors.white : Colors.black,
+        color: themeMode.themeStatus ? Colors.white : Colors.black,
       ),
       onDateChange: (date) {
         setState(() {
@@ -159,7 +159,7 @@ class _ShowTaskState extends State<ShowTask> {
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-            color: themeMode.isDarkMode
+            color: themeMode.themeStatus
                 ? AppColors.darkScfBgClr.withOpacity(0.7)
                 : Colors.white,
           ),

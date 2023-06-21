@@ -40,13 +40,13 @@ class MyTextFormFiled extends StatelessWidget {
               Expanded(
                   child: TextFormField(
                 readOnly: widget == null ? false : true,
-                cursorColor: themeMode.isDarkMode ? Colors.white : Colors.black,
+                cursorColor: themeMode.themeStatus ? Colors.white : Colors.black,
                 cursorHeight: 25,
                 controller: controller,
                 decoration: InputDecoration(
                   hintText: hint,
                   hintStyle: AppTextStyle.subHeadingStyle.copyWith(
-                      color: themeMode.isDarkMode ? Colors.white : Colors.grey,
+                      color: themeMode.themeStatus ? Colors.white : Colors.grey,
                       fontSize: 15),
                   contentPadding: const EdgeInsets.only(left: 10, bottom: 10),
                   border: InputBorder.none,

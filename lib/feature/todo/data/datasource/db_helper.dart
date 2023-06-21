@@ -1,11 +1,13 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:todo_app/feature/todo/data/model/task_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DbHelper {
   static Database? _db;
   static const int _version = 1;
   static const String _tableName = 'tasks';
+
   static Future<void> initDb() async {
     if (_db != null) {
       return;
@@ -18,14 +20,25 @@ class DbHelper {
           await db.execute(
             'CREATE TABLE $_tableName(id INTEGER PRIMARY KEY, title TEXT, note TEXT , date TEXT , startTime TEXT , endTime TEXT, remind INTEGER , repeat TEXT , color INTEGER , isCompleted INTEGER)',
           );
-          await db.execute(
-            'CREATE TABLE themeTable(isDarkmode INTERGER)',
-          );
         },
       );
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<bool?> readStatusThemeMode({required String key}) async {
+    final Future<SharedPreferences> _pref = SharedPreferences.getInstance();
+    final SharedPreferences pref = await _pref;
+    final bool? status = pref.getBool(key);
+    return status;
+  }
+
+  Future<void> writeStatusThemeMode(
+      {required String key, required bool status}) async {
+    final Future<SharedPreferences> _pref = SharedPreferences.getInstance();
+    final SharedPreferences pref = await _pref;
+    pref.setBool(key, status);
   }
 
   Future<int> insert(TaskModel? task) async {
