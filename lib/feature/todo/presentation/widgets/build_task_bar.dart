@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:todo_app/core/layout/app_layout.dart';
 import '../../../../constant/constant.dart';
 import '../provider/theme_service.dart';
 import '../screens/add_task_page.dart';
@@ -15,7 +16,7 @@ class BuildTaskBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(AppLayout.getHeight(context: context, pixel: 15)),
       child: Row(
         children: [
           Column(

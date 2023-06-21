@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/constant/app_colors.dart';
 import 'package:todo_app/constant/app_textStyle.dart';
+import 'package:todo_app/core/layout/app_layout.dart';
 import 'package:todo_app/feature/todo/data/model/task_model.dart';
 import 'package:todo_app/feature/todo/presentation/provider/provider.dart';
 import '../widgets/widgets.dart';
@@ -45,7 +46,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
         iconTheme: const IconThemeData(),
       ),
       body: Container(
-        margin: const EdgeInsets.all(15),
+        margin:
+            EdgeInsets.all(AppLayout.getHeight(context: context, pixel: 15)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -53,24 +55,24 @@ class _AddTaskPageState extends State<AddTaskPage> {
               'Add Task',
               style: AppTextStyle.headingStyle,
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: AppLayout.getHeight(context: context, pixel: 10),
             ),
             MyTextFormFiled(
               subTitle: 'Title',
               hint: 'Enter title here.',
               controller: titleController,
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: AppLayout.getHeight(context: context, pixel: 10),
             ),
             MyTextFormFiled(
               subTitle: 'Note',
               hint: 'Enter Note here.',
               controller: noteController,
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: AppLayout.getHeight(context: context, pixel: 10),
             ),
             MyTextFormFiled(
                 subTitle: 'Date',
@@ -80,8 +82,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       _getDate(context);
                     },
                     icon: const Icon(Icons.calendar_today_outlined))),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: AppLayout.getHeight(context: context, pixel: 10),
             ),
             Row(
               children: [
@@ -103,8 +105,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         icon: const Icon(Icons.access_time_rounded)),
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
+                SizedBox(
+                  width: AppLayout.getWidth(context: context, pixel: 10),
                 ),
                 Expanded(
                   child: MyTextFormFiled(
@@ -122,8 +124,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: AppLayout.getHeight(context: context, pixel: 10),
             ),
             MyTextFormFiled(
               subTitle: 'Remind',
@@ -178,8 +180,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 },
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: AppLayout.getHeight(context: context, pixel: 10),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -210,7 +212,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       //add to database
 
       _addTaskToDB();
-       taskProvider.getTasks();
+      taskProvider.getTasks();
       Navigator.pop(context);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

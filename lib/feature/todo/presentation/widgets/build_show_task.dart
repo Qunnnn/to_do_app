@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:todo_app/constant/constant.dart';
 import 'package:todo_app/feature/todo/data/model/task_model.dart';
 import 'package:todo_app/feature/todo/domain/entities/task_entity.dart';
+import '../../../../core/layout/app_layout.dart';
 import '../provider/provider.dart';
 import 'widgets.dart';
 
@@ -49,19 +50,19 @@ class _ShowTaskState extends State<ShowTask> {
   DatePicker _buildDatePicker(ThemeService themeMode) {
     return DatePicker(
       DateTime.now(),
-      height: 100,
+      height: AppLayout.getHeight(context: context, pixel: 100),
       initialSelectedDate: DateTime.now(),
       selectionColor: themeMode.themeStatus ? Colors.indigo : Colors.teal,
       dateTextStyle: AppTextStyle.contentStyle.copyWith(
-        fontSize: 20,
+        fontSize: AppLayout.getHeight(context: context, pixel: 20),
         color: themeMode.themeStatus ? Colors.white : Colors.black,
       ),
       dayTextStyle: AppTextStyle.contentStyle.copyWith(
-        fontSize: 12,
+        fontSize: AppLayout.getHeight(context: context, pixel: 12),
         color: themeMode.themeStatus ? Colors.white : Colors.black,
       ),
       monthTextStyle: AppTextStyle.contentStyle.copyWith(
-        fontSize: 12,
+        fontSize: AppLayout.getHeight(context: context, pixel: 12),
         color: themeMode.themeStatus ? Colors.white : Colors.black,
       ),
       onDateChange: (date) {

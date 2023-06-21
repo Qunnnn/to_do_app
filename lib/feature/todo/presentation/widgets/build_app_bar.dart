@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/core/layout/app_layout.dart';
 import '../provider/theme_service.dart';
-
-
 
 class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
   final ThemeService themeMode;
@@ -25,11 +24,12 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
           )),
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 20.0),
+          padding: EdgeInsets.only(
+              right: AppLayout.getWidth(context: context, pixel: 20)),
           child: Icon(
             Icons.person,
             color: Theme.of(context).iconTheme.color,
-            size: 25,
+            size: AppLayout.getHeight(context: context, pixel: 25),
           ),
         ),
       ],
@@ -39,5 +39,5 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize =>  const Size(double.infinity, 50);
+  Size get preferredSize => const Size(double.infinity, 50);
 }

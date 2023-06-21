@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/core/layout/app_layout.dart';
 import '../../../../constant/constant.dart';
 import '../provider/theme_service.dart';
 
@@ -26,11 +27,11 @@ class MyTextFormFiled extends StatelessWidget {
           subTitle,
           style: AppTextStyle.subHeadingStyle,
         ),
-        const SizedBox(
-          height: 5,
+        SizedBox(
+          height: AppLayout.getHeight(context: context, pixel: 5),
         ),
         Container(
-          height: 45,
+          height: AppLayout.getHeight(context: context, pixel: 45),
           decoration: BoxDecoration(
               color: Colors.transparent,
               border: Border.all(color: Colors.grey),
@@ -40,19 +41,23 @@ class MyTextFormFiled extends StatelessWidget {
               Expanded(
                   child: TextFormField(
                 readOnly: widget == null ? false : true,
-                cursorColor: themeMode.themeStatus ? Colors.white : Colors.black,
-                cursorHeight: 25,
+                cursorColor:
+                    themeMode.themeStatus ? Colors.white : Colors.black,
+                cursorHeight: AppLayout.getHeight(context: context, pixel: 25),
                 controller: controller,
                 decoration: InputDecoration(
                   hintText: hint,
                   hintStyle: AppTextStyle.subHeadingStyle.copyWith(
                       color: themeMode.themeStatus ? Colors.white : Colors.grey,
-                      fontSize: 15),
-                  contentPadding: const EdgeInsets.only(left: 10, bottom: 10),
+                      fontSize:
+                          AppLayout.getHeight(context: context, pixel: 15)),
+                  contentPadding: EdgeInsets.only(
+                      left: AppLayout.getWidth(context: context, pixel: 10),
+                      bottom: AppLayout.getHeight(context: context, pixel: 10)),
                   border: InputBorder.none,
                 ),
               )),
-               widget == null ?  Container() : widget!
+              widget == null ? Container() : widget!
             ],
           ),
         ),

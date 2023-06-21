@@ -28,16 +28,16 @@ class DbHelper {
   }
 
   Future<bool?> readStatusThemeMode({required String key}) async {
-    final Future<SharedPreferences> _pref = SharedPreferences.getInstance();
-    final SharedPreferences pref = await _pref;
+    final Future<SharedPreferences> pref0 = SharedPreferences.getInstance();
+    final SharedPreferences pref = await pref0;
     final bool? status = pref.getBool(key);
     return status;
   }
 
   Future<void> writeStatusThemeMode(
       {required String key, required bool status}) async {
-    final Future<SharedPreferences> _pref = SharedPreferences.getInstance();
-    final SharedPreferences pref = await _pref;
+    final Future<SharedPreferences> pref0 = SharedPreferences.getInstance();
+    final SharedPreferences pref = await pref0;
     pref.setBool(key, status);
   }
 

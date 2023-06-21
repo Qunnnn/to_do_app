@@ -10,7 +10,7 @@ class Themes {
     iconTheme: const IconThemeData(
       color: Colors.white,
     ),
-    textTheme: GoogleFonts.acmeTextTheme(
+    textTheme: GoogleFonts.abelTextTheme(
         ThemeData(brightness: Brightness.dark).textTheme),
   );
   static final lightTheme = ThemeData(
@@ -18,7 +18,7 @@ class Themes {
     scaffoldBackgroundColor: AppColors.lightScfBgClr,
     useMaterial3: true,
     iconTheme: const IconThemeData(color: Colors.black),
-    textTheme: GoogleFonts.acmeTextTheme(
+    textTheme: GoogleFonts.abelTextTheme(
         ThemeData(brightness: Brightness.light).textTheme),
   );
 }
