@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:todo_app/core/layout/app_layout.dart';
 import '../../../../constant/constant.dart';
 import '../../domain/entities/task_entity.dart';
@@ -21,9 +20,10 @@ class TaskTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-          top: AppLayout.getHeight(context: context, pixel: 10),
-          right: AppLayout.getWidth(context: context, pixel: 10),
-          left: AppLayout.getWidth(context: context, pixel: 10)),
+        top: AppLayout.getHeight(context: context, pixel: 10),
+        right: AppLayout.getWidth(context: context, pixel: 10),
+        left: AppLayout.getWidth(context: context, pixel: 10),
+      ),
       padding: const EdgeInsets.all(7),
       height: size.height * 0.13,
       decoration: BoxDecoration(

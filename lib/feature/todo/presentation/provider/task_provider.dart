@@ -7,11 +7,14 @@ class TaskProvider extends ChangeNotifier {
   InsertTask insertTask;
   GetAllTasks getAllTasks;
   DeleteTask deleteTask;
-  UpdateTask updateTask;
+  UpdateState updateState;
+  EditTask edit;
   TaskProvider(
       {required this.insertTask,
       required this.getAllTasks,
-      required this.deleteTask , required this.updateTask});
+      required this.deleteTask,
+      required this.updateState,
+      required this.edit});
 
   List<TaskEntity> list = [];
 
@@ -28,7 +31,11 @@ class TaskProvider extends ChangeNotifier {
     return await deleteTask.execute(task);
   }
 
-  Future<int> update(int id) async {
-    return await updateTask.execute(id);
+  Future<int> updateTaskState(int id) async {
+    return await updateState.execute(id);
+  }
+
+  Future<int> editTask(int id, String title, String note) async {
+    return await edit.execute(id, title, note);
   }
 }

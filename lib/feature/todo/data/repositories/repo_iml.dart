@@ -20,9 +20,14 @@ class TaskRepoIml implements TaskRepo {
   Future<int> deleteTask(TaskModel? task) async {
     return await dbHelper.delete(task);
   }
-  
+
   @override
-  Future<int> updateTask(int id) async {
-    return await dbHelper.update(id); 
+  Future<int> updateState(int id) async {
+    return await dbHelper.updateState(id);
+  }
+
+  @override
+  Future<int> editTask(int id, String title, String note) async {
+    return await dbHelper.editTask(id, title, note);
   }
 }

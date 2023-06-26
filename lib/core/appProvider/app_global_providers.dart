@@ -20,8 +20,9 @@ class AppGlobalProviders {
                   GetAllTasks(taskRepo: TaskRepoIml(dbHelper: DbHelper())),
               deleteTask:
                   DeleteTask(taskRepo: TaskRepoIml(dbHelper: DbHelper())),
-              updateTask:
-                  UpdateTask(taskRepo: TaskRepoIml(dbHelper: DbHelper()))),
+              updateState:
+                  UpdateState(taskRepo: TaskRepoIml(dbHelper: DbHelper())),
+              edit: EditTask(taskRepo: TaskRepoIml(dbHelper: DbHelper()))),
         )
       ];
 }

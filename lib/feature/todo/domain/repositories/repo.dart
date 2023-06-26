@@ -5,6 +5,6 @@ abstract class TaskRepo {
   Future<List<TaskEntity>> getAllTasks();
   Future<int> insertTask(TaskModel? task);
   Future<int> deleteTask(TaskModel? task);
-  Future<int> updateTask(int id);
-
+  Future<int> updateState(int id);
+  Future<int> editTask(int id , String title , String note);
 }

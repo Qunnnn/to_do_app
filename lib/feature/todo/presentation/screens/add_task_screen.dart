@@ -38,6 +38,13 @@ class _AddTaskPageState extends State<AddTaskPage> {
   }
 
   @override
+  void dispose() {
+    titleController.dispose();
+    noteController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final themeMode = context.watch<ThemeService>();
     return Scaffold(
@@ -62,7 +69,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
               subTitle: 'Title',
               hint: 'Enter title here.',
               controller: titleController,
-              expand: true,
+              expand: false,
+              maxLines: 1,
             ),
             SizedBox(
               height: AppLayout.getHeight(context: context, pixel: 10),

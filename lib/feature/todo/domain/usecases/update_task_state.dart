@@ -1,9 +1,9 @@
 import '../repositories/repo.dart';
 
-class UpdateTask {
+class UpdateState {
   TaskRepo taskRepo;
-  UpdateTask({required this.taskRepo});
+  UpdateState({required this.taskRepo});
     Future<int> execute(int id) {
-    return taskRepo.updateTask(id);
+    return taskRepo.updateState(id);
   }
 }

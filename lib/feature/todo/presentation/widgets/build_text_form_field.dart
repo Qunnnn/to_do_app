@@ -10,8 +10,10 @@ class MyTextFormFiled extends StatelessWidget {
   final Widget? widget;
   final TextEditingController? controller;
   final bool? expand;
+  final int? maxLines;
   const MyTextFormFiled(
       {super.key,
+      this.maxLines,
       required this.subTitle,
       required this.hint,
       this.controller,
@@ -43,7 +45,7 @@ class MyTextFormFiled extends StatelessWidget {
                   child: TextFormField(
                 readOnly: widget == null ? false : true,
                 expands: expand ?? false,
-                maxLines: expand == true ? null : 1,
+                maxLines: maxLines,
                 cursorColor:
                     themeMode.themeStatus ? Colors.white : Colors.black,
                 cursorHeight: AppLayout.getHeight(context: context, pixel: 25),

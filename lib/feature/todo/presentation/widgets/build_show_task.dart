@@ -7,9 +7,8 @@ import 'package:provider/provider.dart';
 import 'package:todo_app/constant/constant.dart';
 import 'package:todo_app/feature/todo/data/model/task_model.dart';
 import 'package:todo_app/feature/todo/domain/entities/task_entity.dart';
+import 'package:todo_app/feature/todo/presentation/presentation.dart';
 import '../../../../core/layout/app_layout.dart';
-import '../provider/provider.dart';
-import 'widgets.dart';
 
 class ShowTask extends StatefulWidget {
   const ShowTask({
@@ -140,7 +139,6 @@ class _ShowTaskState extends State<ShowTask> {
               ),
             );
           } else {
-            print(task.list[index].date);
             return Container();
           }
         },
@@ -155,7 +153,7 @@ class _ShowTaskState extends State<ShowTask> {
       builder: (context) {
         return Container(
           height:
-              task.isCompleted == 1 ? size.height * 0.2 : size.height * 0.27,
+              task.isCompleted == 1 ? size.height * 0.26 : size.height * 0.35,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
@@ -185,7 +183,7 @@ class _ShowTaskState extends State<ShowTask> {
                       isClose: false,
                       clr: Colors.red,
                       onTap: () {
-                        taskProvider.update(task.id!);
+                        taskProvider.updateTaskState(task.id!);
                         taskProvider.getTasks();
                         Navigator.pop(context);
                       },
@@ -196,11 +194,24 @@ class _ShowTaskState extends State<ShowTask> {
               ModalSheetButton(
                 label: 'Deleted',
                 isClose: false,
-                clr: Colors.blue,
+                clr: AppColors.blueAccentColor,
                 onTap: () {
                   taskProvider.delete(task as TaskModel?);
                   taskProvider.getTasks();
                   Navigator.pop(context);
+                },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ModalSheetButton(
+                label: 'Detail',
+                clr: AppColors.lightAppbarClr,
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>  DetailScreen( id: task.id!,)));
                 },
               ),
               const SizedBox(

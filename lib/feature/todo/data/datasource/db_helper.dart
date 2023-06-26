@@ -59,8 +59,12 @@ class DbHelper {
     return await _db!.delete(_tableName, where: 'id=?', whereArgs: [task!.id]);
   }
 
-  Future<int> update(int id) async {
+  Future<int> updateState(int id) async {
     return await _db!.rawUpdate(
         'UPDATE $_tableName SET isCompleted = ? WHERE id = ?', [1, id]);
+  }
+    Future<int> editTask(int id , String title , String note) async {
+    return await _db!.rawUpdate(
+        'UPDATE $_tableName  SET title = ?,  note = ? WHERE id = ?', [title, note, id]);
   }
 }
