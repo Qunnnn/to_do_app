@@ -46,7 +46,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = context.watch<ThemeService>();
+    final themeMode = context.read<ThemeService>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(

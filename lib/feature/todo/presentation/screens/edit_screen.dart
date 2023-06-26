@@ -7,6 +7,7 @@ import '../../domain/entities/task_entity.dart';
 import '../provider/task_provider.dart';
 import '../provider/theme_service.dart';
 
+// ignore: must_be_immutable
 class EditScreen extends StatefulWidget {
   EditScreen({super.key, required this.task});
   TaskEntity task;
@@ -39,8 +40,7 @@ class _EditScreenState extends State<EditScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _task = context.watch<TaskProvider>();
-    final themeMode = context.watch<ThemeService>();
+    final themeMode = context.read<ThemeService>();
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(),
@@ -73,11 +73,13 @@ class _EditScreenState extends State<EditScreen> {
             padding: EdgeInsets.symmetric(
                 horizontal: AppLayout.getWidth(context: context, pixel: 120)),
             child: GestureDetector(
-                onTap: ()  {
-                  _task.editTask(widget.task.id!, titleController.text,
-                  noteController.text);
-                  _task.getTasks();
-                   Navigator.pop(context);
+                onTap: () {
+                  Provider.of<TaskProvider>(context, listen: false).editTask(
+                      widget.task.id!,
+                      titleController.text,
+                      noteController.text);
+                  Provider.of<TaskProvider>(context, listen: false).getTasks();
+                  Navigator.pop(context);
                 },
                 child: MyButton(themeMode: themeMode, title: 'Save')),
           ),

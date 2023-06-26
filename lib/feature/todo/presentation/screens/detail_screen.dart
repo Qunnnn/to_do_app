@@ -25,7 +25,7 @@ class _DetailEditScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final task = context.watch<TaskProvider>();
+    final task = context.read<TaskProvider>();
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(),
@@ -36,7 +36,7 @@ class _DetailEditScreenState extends State<DetailScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => EditScreen(
-                      task: task.list[widget.id -1],
+                      task: task.list[widget.id - 1],
                     ),
                   ));
               setState(() {});
@@ -54,8 +54,8 @@ class _DetailEditScreenState extends State<DetailScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextWidget(label: 'Title', text: task.list[widget.id -1].title!),
-          TextWidget(label: 'Note', text: task.list[widget.id -1].note!),
+          TextWidget(label: 'Title', text: task.list[widget.id - 1].title!),
+          TextWidget(label: 'Note', text: task.list[widget.id - 1].note!),
         ],
       ),
     );

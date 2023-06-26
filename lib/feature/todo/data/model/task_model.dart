@@ -1,15 +1,25 @@
 import 'package:todo_app/feature/todo/domain/entities/task_entity.dart';
 
 class TaskModel extends TaskEntity {
+  @override
   int? id;
+  @override
   String? title;
+  @override
   String? note;
+  @override
   int? isCompleted;
+  @override
   String? date;
+  @override
   String? startTime;
+  @override
   String? endTime;
+  @override
   int? color;
+  @override
   int? remind;
+  @override
   String? repeat;
 
   TaskModel(

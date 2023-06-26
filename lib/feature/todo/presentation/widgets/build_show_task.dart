@@ -211,7 +211,9 @@ class _ShowTaskState extends State<ShowTask> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>  DetailScreen( id: task.id!,)));
+                          builder: (context) => DetailScreen(
+                                id: task.id!,
+                              )));
                 },
               ),
               const SizedBox(
