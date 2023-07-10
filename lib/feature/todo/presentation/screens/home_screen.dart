@@ -12,12 +12,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final themeMode = context.watch<ThemeService>();
     return Scaffold(
-      appBar: BuildAppBar(themeMode: themeMode),
+      appBar: const BuildAppBar(),
       body: Column(
         children: [
-          BuildTaskBar(themeMode: themeMode),
+          Builder(builder: (context) {
+            final themeMode = context.watch<ThemeService>();
+            return BuildTaskBar(themeMode: themeMode);
+          }),
           const ShowTask(),
         ],
       ),

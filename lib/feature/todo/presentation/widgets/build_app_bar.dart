@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_app/core/layout/app_layout.dart';
 import '../provider/theme_service.dart';
 
 class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final ThemeService themeMode;
   const BuildAppBar({
     super.key,
-    required this.themeMode,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: GestureDetector(
-          onTap: () {
-            themeMode.toggleTheme(themeMode.isDarkMode);
-          },
-          child: Icon(
-            themeMode.themeStatus
-                ? Icons.nightlight_round_outlined
-                : Icons.wb_sunny_outlined,
-            color: Theme.of(context).iconTheme.color,
-          )),
+      leading: Builder(builder: (context) {
+        final themeMode = context.watch<ThemeService>();
+        return GestureDetector(
+            onTap: () {
+              themeMode.toggleTheme(themeMode.isDarkMode);
+            },
+            child: Icon(
+              themeMode.themeStatus
+                  ? Icons.nightlight_round_outlined
+                  : Icons.wb_sunny_outlined,
+              color: Theme.of(context).iconTheme.color,
+            ));
+      }),
       actions: [
         Padding(
           padding: EdgeInsets.only(

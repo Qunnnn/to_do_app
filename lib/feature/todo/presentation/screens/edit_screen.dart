@@ -40,7 +40,6 @@ class _EditScreenState extends State<EditScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = context.read<ThemeService>();
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(),
@@ -72,16 +71,15 @@ class _EditScreenState extends State<EditScreen> {
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: AppLayout.getWidth(context: context, pixel: 120)),
-            child: GestureDetector(
-                onTap: () {
-                  Provider.of<TaskProvider>(context, listen: false).editTask(
-                      widget.task.id!,
-                      titleController.text,
-                      noteController.text);
-                  Provider.of<TaskProvider>(context, listen: false).getTasks();
-                  Navigator.pop(context);
-                },
-                child: MyButton(themeMode: themeMode, title: 'Save')),
+            child: GestureDetector(onTap: () {
+              Provider.of<TaskProvider>(context, listen: false).editTask(
+                  widget.task.id!, titleController.text, noteController.text);
+              Provider.of<TaskProvider>(context, listen: false).getTasks();
+              Navigator.pop(context);
+            }, child: Builder(builder: (context) {
+              final themeMode = context.read<ThemeService>();
+              return MyButton(themeMode: themeMode, title: 'Save');
+            })),
           ),
         ],
       ),

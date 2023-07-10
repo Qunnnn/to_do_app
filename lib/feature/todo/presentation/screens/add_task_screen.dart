@@ -46,7 +46,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = context.read<ThemeService>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -204,10 +203,13 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   },
                   customBorder: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
-                  child: MyButton(
-                    themeMode: themeMode,
-                    title: 'Create Task',
-                  ),
+                  child: Builder(builder: (context) {
+                    final themeMode = context.read<ThemeService>();
+                    return MyButton(
+                      themeMode: themeMode,
+                      title: 'Create Task',
+                    );
+                  }),
                 ),
               ],
             )

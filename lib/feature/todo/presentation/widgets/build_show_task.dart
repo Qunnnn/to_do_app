@@ -33,14 +33,19 @@ class _ShowTaskState extends State<ShowTask> {
 
   @override
   Widget build(BuildContext context) {
-    final task = context.watch<TaskProvider>();
-    final themeMode = context.watch<ThemeService>();
     final size = MediaQuery.of(context).size;
     return Expanded(
       child: Column(
         children: [
-          _buildDatePicker(themeMode),
-          _showTask(task, size, themeMode),
+          Builder(builder: (context) {
+            final themeMode = context.watch<ThemeService>();
+            return _buildDatePicker(themeMode);
+          }),
+          Builder(builder: (context) {
+            final task = context.watch<TaskProvider>();
+            final themeMode = context.watch<ThemeService>();
+            return _showTask(task, size, themeMode);
+          }),
         ],
       ),
     );
