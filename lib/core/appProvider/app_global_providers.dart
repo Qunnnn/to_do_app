@@ -5,13 +5,15 @@ import '../../feature/todo/presentation/provider/provider.dart';
 
 class AppGlobalProviders {
   static get globalProviders => [
-        ChangeNotifierProvider(
-          create: (context) => ThemeService(
+        ChangeNotifierProvider(create: (context) {
+          final themService = ThemeService(
               readStatusThemeMode: ReadStatusThemeMode(
                   themeRepo: ThemeRepoIml(dbHelper: DbHelper())),
               writeStatusThemeMode: WriteStatusThemeMode(
-                  themeRepo: ThemeRepoIml(dbHelper: DbHelper()))),
-        ),
+                  themeRepo: ThemeRepoIml(dbHelper: DbHelper())));
+          themService.getThemeStatus();
+          return themService;
+        }),
         ChangeNotifierProvider(
           create: (context) => TaskProvider(
               insertTask:

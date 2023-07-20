@@ -16,6 +16,7 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
         return GestureDetector(
             onTap: () {
               themeMode.toggleTheme(themeMode.isDarkMode);
+              themeMode.getThemeStatus();
             },
             child: Icon(
               themeMode.themeStatus

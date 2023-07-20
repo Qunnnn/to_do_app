@@ -16,18 +16,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
     return MultiProvider(
       providers: AppGlobalProviders.globalProviders,
       builder: (context, child) {
-           final themeMode = Provider.of<ThemeService>(context);
-           themeMode.getThemeStatus();
+        final themeMode = Provider.of<ThemeService>(context);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: Themes.lightTheme,
           darkTheme: Themes.darkTheme,
-          themeMode:   themeMode.themeStatus? ThemeMode.dark: ThemeMode.light ,
+          themeMode: themeMode.themeStatus ? ThemeMode.dark : ThemeMode.light,
           home: const HomePage(),
         );
       },
