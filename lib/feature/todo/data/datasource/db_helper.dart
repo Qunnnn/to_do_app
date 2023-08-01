@@ -8,6 +8,11 @@ class DbHelper {
   static const int _version = 1;
   static const String _tableName = 'tasks';
 
+  DbHelper._internal();
+  static final DbHelper _dbHelper =  DbHelper._internal();
+  
+  static DbHelper get instance => _dbHelper;
+
   static Future<void> initDb() async {
     if (_db != null) {
       return;
@@ -63,8 +68,10 @@ class DbHelper {
     return await _db!.rawUpdate(
         'UPDATE $_tableName SET isCompleted = ? WHERE id = ?', [1, id]);
   }
-    Future<int> editTask(int id , String title , String note) async {
+
+  Future<int> editTask(int id, String title, String note) async {
     return await _db!.rawUpdate(
-        'UPDATE $_tableName  SET title = ?,  note = ? WHERE id = ?', [title, note, id]);
+        'UPDATE $_tableName  SET title = ?,  note = ? WHERE id = ?',
+        [title, note, id]);
   }
 }
