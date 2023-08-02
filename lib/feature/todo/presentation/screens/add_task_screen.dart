@@ -241,7 +241,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
         task: TaskModel(
       title: titleController.text,
       note: noteController.text,
-      date: DateFormat.yMd().format(_selectDate),
+      date: _selectDate.toString(),
       startTime: DateFormat("hh:mm a")
           .format(DateTime(_selectDate.year, _selectDate.month, _selectDate.day,
               _startTime.hour, _startTime.minute))

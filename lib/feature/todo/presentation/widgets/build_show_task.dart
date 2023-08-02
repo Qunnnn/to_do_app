@@ -102,6 +102,33 @@ class _ShowTaskState extends State<ShowTask> {
       child: ListView.builder(
         itemCount: task.list.length,
         itemBuilder: (context, index) {
+
+          if (task.list[index].repeat == 'None') {
+            final dateCheck = DateTime.parse(task.list[index].date.toString());
+            if (dateCheck.day ==
+                selectedDate.day && dateCheck.month == selectedDate.month) {
+              return AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 700),
+                child: SlideAnimation(
+                  child: FadeInAnimation(
+                    curve: Curves.easeInToLinear,
+                    child: GestureDetector(
+                      onTap: () {
+                        _showModalBottomSheet(
+                            context, task.list[index], size, themeMode, task);
+                      },
+                      child: TaskTile(
+                          size: size,
+                          task: task.list[index],
+                          themeMode: themeMode),
+                    ),
+                  ),
+                ),
+              );
+            }
+          }
+
           if (task.list[index].repeat == 'Daily') {
             return AnimationConfiguration.staggeredList(
               position: index,
@@ -123,29 +150,34 @@ class _ShowTaskState extends State<ShowTask> {
               ),
             );
           }
-          if (task.list[index].date == DateFormat.yMd().format(selectedDate)) {
-            return AnimationConfiguration.staggeredList(
-              position: index,
-              duration: const Duration(milliseconds: 700),
-              child: SlideAnimation(
-                child: FadeInAnimation(
-                  curve: Curves.easeInToLinear,
-                  child: GestureDetector(
-                    onTap: () {
-                      _showModalBottomSheet(
-                          context, task.list[index], size, themeMode, task);
-                    },
-                    child: TaskTile(
-                        size: size,
-                        task: task.list[index],
-                        themeMode: themeMode),
+
+          if (task.list[index].repeat == 'Monthtly') {
+            if (DateTime.parse(task.list[index].date.toString()).day ==
+                selectedDate.day) {
+              return AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 700),
+                child: SlideAnimation(
+                  child: FadeInAnimation(
+                    curve: Curves.easeInToLinear,
+                    child: GestureDetector(
+                      onTap: () {
+                        _showModalBottomSheet(
+                            context, task.list[index], size, themeMode, task);
+                      },
+                      child: TaskTile(
+                          size: size,
+                          task: task.list[index],
+                          themeMode: themeMode),
+                    ),
                   ),
                 ),
-              ),
-            );
-          } else {
-            return Container();
+              );
+            }
           }
+
+          return Container();
+
         },
       ),
     );
