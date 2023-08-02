@@ -9,23 +9,23 @@ class AppGlobalProviders {
         ChangeNotifierProvider(create: (context) {
           final themService = ThemeService(
               readStatusThemeMode: ReadStatusThemeMode(
-                  themeRepo: ThemeRepoIml(netWorkManager:NetWorkManager.instance)),
+                  themeRepo: ThemeRepoIml(localStorage:LocalStorage.instance)),
               writeStatusThemeMode: WriteStatusThemeMode(
-                  themeRepo: ThemeRepoIml(netWorkManager:NetWorkManager.instance)));
+                  themeRepo: ThemeRepoIml(localStorage:LocalStorage.instance)));
           themService.getThemeStatus();
           return themService;
         }),
         ChangeNotifierProvider(
           create: (context) => TaskProvider(
               insertTask:
-                  InsertTask(taskRepo: TaskRepoIml(netWorkManager:NetWorkManager.instance)),
+                  InsertTask(taskRepo: TaskRepoIml(localStorage:LocalStorage.instance)),
               getAllTasks:
-                  GetAllTasks(taskRepo: TaskRepoIml(netWorkManager:NetWorkManager.instance)),
+                  GetAllTasks(taskRepo: TaskRepoIml(localStorage:LocalStorage.instance)),
               deleteTask:
-                  DeleteTask(taskRepo: TaskRepoIml(netWorkManager:NetWorkManager.instance)),
+                  DeleteTask(taskRepo: TaskRepoIml(localStorage:LocalStorage.instance)),
               updateState:
-                  UpdateState(taskRepo: TaskRepoIml(netWorkManager:NetWorkManager.instance)),
-              edit: EditTask(taskRepo: TaskRepoIml(netWorkManager:NetWorkManager.instance))),
+                  UpdateState(taskRepo: TaskRepoIml(localStorage:LocalStorage.instance)),
+              edit: EditTask(taskRepo: TaskRepoIml(localStorage:LocalStorage.instance))),
         )
       ];
 }

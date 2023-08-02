@@ -3,15 +3,15 @@ import 'package:sqflite/sqflite.dart';
 import 'package:todo_app/feature/todo/data/model/task_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class NetWorkManager {
+class LocalStorage {
   static Database? _db;
   static const int _version = 1;
   static const String _tableName = 'tasks';
 
-  NetWorkManager._internal();
-  static final NetWorkManager _NetWorkManager =  NetWorkManager._internal();
+  LocalStorage._internal();
+  static final LocalStorage _LocalStorage =  LocalStorage._internal();
   
-  static NetWorkManager get instance => _NetWorkManager;
+  static LocalStorage get instance => _LocalStorage;
 
   static Future<void> initDb() async {
     if (_db != null) {
