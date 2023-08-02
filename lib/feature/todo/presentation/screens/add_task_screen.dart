@@ -34,6 +34,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       taskProvider = Provider.of<TaskProvider>(context, listen: false);
     });
+    print(_selectDate);
     super.initState();
   }
 

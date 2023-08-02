@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/core/appProvider/app_global_providers.dart';
-import 'package:todo_app/feature/todo/data/datasource/db_helper.dart';
+import 'package:todo_app/feature/todo/data/datasource/network_manager.dart';
 import 'constant/theme.dart';
 import 'feature/todo/presentation/presentation.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DbHelper.initDb();
+  await NetWorkManager.initDb();
   runApp(const MyApp());
 }
 

@@ -9,23 +9,23 @@ class AppGlobalProviders {
         ChangeNotifierProvider(create: (context) {
           final themService = ThemeService(
               readStatusThemeMode: ReadStatusThemeMode(
-                  themeRepo: ThemeRepoIml(dbHelper: DbHelper.instance)),
+                  themeRepo: ThemeRepoIml(netWorkManager:NetWorkManager.instance)),
               writeStatusThemeMode: WriteStatusThemeMode(
-                  themeRepo: ThemeRepoIml(dbHelper: DbHelper.instance)));
+                  themeRepo: ThemeRepoIml(netWorkManager:NetWorkManager.instance)));
           themService.getThemeStatus();
           return themService;
         }),
         ChangeNotifierProvider(
           create: (context) => TaskProvider(
               insertTask:
-                  InsertTask(taskRepo: TaskRepoIml(dbHelper: DbHelper.instance)),
+                  InsertTask(taskRepo: TaskRepoIml(netWorkManager:NetWorkManager.instance)),
               getAllTasks:
-                  GetAllTasks(taskRepo: TaskRepoIml(dbHelper: DbHelper.instance)),
+                  GetAllTasks(taskRepo: TaskRepoIml(netWorkManager:NetWorkManager.instance)),
               deleteTask:
-                  DeleteTask(taskRepo: TaskRepoIml(dbHelper: DbHelper.instance)),
+                  DeleteTask(taskRepo: TaskRepoIml(netWorkManager:NetWorkManager.instance)),
               updateState:
-                  UpdateState(taskRepo: TaskRepoIml(dbHelper: DbHelper.instance)),
-              edit: EditTask(taskRepo: TaskRepoIml(dbHelper: DbHelper.instance))),
+                  UpdateState(taskRepo: TaskRepoIml(netWorkManager:NetWorkManager.instance)),
+              edit: EditTask(taskRepo: TaskRepoIml(netWorkManager:NetWorkManager.instance))),
         )
       ];
 }

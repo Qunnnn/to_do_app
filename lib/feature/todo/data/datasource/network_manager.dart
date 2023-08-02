@@ -3,15 +3,15 @@ import 'package:sqflite/sqflite.dart';
 import 'package:todo_app/feature/todo/data/model/task_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DbHelper {
+class NetWorkManager {
   static Database? _db;
   static const int _version = 1;
   static const String _tableName = 'tasks';
 
-  DbHelper._internal();
-  static final DbHelper _dbHelper =  DbHelper._internal();
+  NetWorkManager._internal();
+  static final NetWorkManager _NetWorkManager =  NetWorkManager._internal();
   
-  static DbHelper get instance => _dbHelper;
+  static NetWorkManager get instance => _NetWorkManager;
 
   static Future<void> initDb() async {
     if (_db != null) {
