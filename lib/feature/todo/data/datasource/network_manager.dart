@@ -23,7 +23,7 @@ class NetWorkManager {
         version: _version,
         onCreate: (db, version) async {
           await db.execute(
-            'CREATE TABLE $_tableName(id INTEGER PRIMARY KEY, title TEXT, note TEXT , date TEXT , startTime TEXT , endTime TEXT, remind INTEGER , repeat TEXT , color INTEGER , isCompleted INTEGER)',
+            'CREATE TABLE $_tableName(id INTEGER PRIMARY KEY, title TEXT, note TEXT , date TEXT , nameOfDays Text , startTime TEXT , endTime TEXT, remind INTEGER , repeat TEXT , color INTEGER , isCompleted INTEGER)',
           );
         },
       );

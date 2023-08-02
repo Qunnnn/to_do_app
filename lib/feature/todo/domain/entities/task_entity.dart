@@ -4,6 +4,7 @@ class TaskEntity {
   String? note;
   int? isCompleted;
   String? date;
+  String? nameOfDays;
   String? startTime;
   String? endTime;
   int? color;
@@ -16,6 +17,7 @@ class TaskEntity {
       this.note,
       this.isCompleted,
       this.date,
+      this.nameOfDays,
       this.startTime,
       this.endTime,
       this.remind,

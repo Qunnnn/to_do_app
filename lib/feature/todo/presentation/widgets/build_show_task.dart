@@ -21,7 +21,7 @@ class ShowTask extends StatefulWidget {
 
 class _ShowTaskState extends State<ShowTask> {
   late TaskProvider taskProvider;
-  DateTime selectedDate = DateTime.now();
+  DateTime _selectDate = DateTime.now();
   @override
   void initState() {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
@@ -71,7 +71,7 @@ class _ShowTaskState extends State<ShowTask> {
       ),
       onDateChange: (date) {
         setState(() {
-          selectedDate = date;
+          _selectDate = date;
         });
       },
     );
@@ -102,11 +102,10 @@ class _ShowTaskState extends State<ShowTask> {
       child: ListView.builder(
         itemCount: task.list.length,
         itemBuilder: (context, index) {
-
           if (task.list[index].repeat == 'None') {
             final dateCheck = DateTime.parse(task.list[index].date.toString());
-            if (dateCheck.day ==
-                selectedDate.day && dateCheck.month == selectedDate.month) {
+            if (dateCheck.day == _selectDate.day &&
+                dateCheck.month == _selectDate.month) {
               return AnimationConfiguration.staggeredList(
                 position: index,
                 duration: const Duration(milliseconds: 700),
@@ -151,9 +150,33 @@ class _ShowTaskState extends State<ShowTask> {
             );
           }
 
+          if (task.list[index].repeat == 'Weekly') {
+            if(task.list[index].nameOfDays ==  DateFormat('EEEE').format(_selectDate)){
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(milliseconds: 700),
+              child: SlideAnimation(
+                child: FadeInAnimation(
+                  curve: Curves.easeInToLinear,
+                  child: GestureDetector(
+                    onTap: () {
+                      _showModalBottomSheet(
+                          context, task.list[index], size, themeMode, task);
+                    },
+                    child: TaskTile(
+                        size: size,
+                        task: task.list[index],
+                        themeMode: themeMode),
+                  ),
+                ),
+              ),
+            );
+            }
+          }
+
           if (task.list[index].repeat == 'Monthtly') {
             if (DateTime.parse(task.list[index].date.toString()).day ==
-                selectedDate.day) {
+                _selectDate.day) {
               return AnimationConfiguration.staggeredList(
                 position: index,
                 duration: const Duration(milliseconds: 700),
@@ -177,7 +200,6 @@ class _ShowTaskState extends State<ShowTask> {
           }
 
           return Container();
-
         },
       ),
     );
