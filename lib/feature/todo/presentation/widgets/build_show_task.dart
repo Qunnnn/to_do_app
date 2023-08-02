@@ -151,30 +151,32 @@ class _ShowTaskState extends State<ShowTask> {
           }
 
           if (task.list[index].repeat == 'Weekly') {
-            if(task.list[index].nameOfDays ==  DateFormat('EEEE').format(_selectDate)){
-            return AnimationConfiguration.staggeredList(
-              position: index,
-              duration: const Duration(milliseconds: 700),
-              child: SlideAnimation(
-                child: FadeInAnimation(
-                  curve: Curves.easeInToLinear,
-                  child: GestureDetector(
-                    onTap: () {
-                      _showModalBottomSheet(
-                          context, task.list[index], size, themeMode, task);
-                    },
-                    child: TaskTile(
-                        size: size,
-                        task: task.list[index],
-                        themeMode: themeMode),
+            if (DateFormat('EEEE')
+                    .format(DateTime.parse(task.list[index].date!)) ==
+                DateFormat('EEEE').format(_selectDate)) {
+              return AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 700),
+                child: SlideAnimation(
+                  child: FadeInAnimation(
+                    curve: Curves.easeInToLinear,
+                    child: GestureDetector(
+                      onTap: () {
+                        _showModalBottomSheet(
+                            context, task.list[index], size, themeMode, task);
+                      },
+                      child: TaskTile(
+                          size: size,
+                          task: task.list[index],
+                          themeMode: themeMode),
+                    ),
                   ),
                 ),
-              ),
-            );
+              );
             }
           }
 
-          if (task.list[index].repeat == 'Monthtly') {
+          if (task.list[index].repeat == 'Monthly') {
             if (DateTime.parse(task.list[index].date.toString()).day ==
                 _selectDate.day) {
               return AnimationConfiguration.staggeredList(

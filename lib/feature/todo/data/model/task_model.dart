@@ -12,8 +12,6 @@ class TaskModel extends TaskEntity {
   @override
   String? date;
   @override
-  String? nameOfDays;
-  @override
   String? startTime;
   @override
   String? endTime;
@@ -30,7 +28,6 @@ class TaskModel extends TaskEntity {
       this.note,
       this.isCompleted,
       this.date,
-      this.nameOfDays,
       this.startTime,
       this.endTime,
       this.remind,
@@ -42,7 +39,6 @@ class TaskModel extends TaskEntity {
             note: note,
             isCompleted: isCompleted,
             date: date,
-            nameOfDays: nameOfDays,
             startTime: startTime,
             endTime: endTime,
             remind: remind,
@@ -55,7 +51,6 @@ class TaskModel extends TaskEntity {
       note: json['note'],
       isCompleted: json['isCompleted'],
       date: json['date'],
-      nameOfDays: json['nameOfDays'],
       startTime: json['startTime'],
       endTime: json['endTime'],
       remind: json['remind'],
@@ -71,7 +66,6 @@ class TaskModel extends TaskEntity {
     data['note'] = note;
     data['isCompleted'] = isCompleted;
     data['date'] = date;
-    data['nameOfDays'] = nameOfDays;
     data['startTime'] = startTime;
     data['endTime'] = endTime;
     data['remind'] = remind;

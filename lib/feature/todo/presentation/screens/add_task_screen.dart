@@ -26,7 +26,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
   int _selectedRemind = 5;
   List<int> remindList = [5, 10, 15, 20];
   String _selectedRepeat = 'None';
-  List<String> repeatList = ['None', 'Daily', 'Weekly', 'Monhtly'];
+  List<String> repeatList = ['None', 'Daily', 'Weekly', 'Monthly'];
   int selectedColor = 0;
 
   @override
@@ -242,7 +242,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
       title: titleController.text,
       note: noteController.text,
       date: _selectDate.toString(),
-      nameOfDays: DateFormat('EEEE').format(_selectDate),
       startTime: DateFormat("hh:mm a")
           .format(DateTime(_selectDate.year, _selectDate.month, _selectDate.day,
               _startTime.hour, _startTime.minute))
