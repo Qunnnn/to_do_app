@@ -5,6 +5,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/constant/constant.dart';
+import 'package:todo_app/core/format/format_helper.dart';
 import 'package:todo_app/feature/todo/data/model/task_model.dart';
 import 'package:todo_app/feature/todo/domain/entities/task_entity.dart';
 import 'package:todo_app/feature/todo/presentation/presentation.dart';
@@ -103,7 +104,7 @@ class _ShowTaskState extends State<ShowTask> {
         itemCount: task.list.length,
         itemBuilder: (context, index) {
           if (task.list[index].repeat == 'None') {
-            final dateCheck = DateTime.parse(task.list[index].date.toString());
+            final dateCheck = task.list[index].date!.dateTimeFormat;
             if (dateCheck.day == _selectDate.day &&
                 dateCheck.month == _selectDate.month) {
               return AnimationConfiguration.staggeredList(
@@ -151,9 +152,8 @@ class _ShowTaskState extends State<ShowTask> {
           }
 
           if (task.list[index].repeat == 'Weekly') {
-            if (DateFormat('EEEE')
-                    .format(DateTime.parse(task.list[index].date!)) ==
-                DateFormat('EEEE').format(_selectDate)) {
+            if (task.list[index].date!.dateTimeFormat.weekDayFormat ==
+                _selectDate.weekDayFormat) {
               return AnimationConfiguration.staggeredList(
                 position: index,
                 duration: const Duration(milliseconds: 700),
@@ -177,7 +177,7 @@ class _ShowTaskState extends State<ShowTask> {
           }
 
           if (task.list[index].repeat == 'Monthly') {
-            if (DateTime.parse(task.list[index].date.toString()).day ==
+          if (task.list[index].date!.dateTimeFormat.day ==
                 _selectDate.day) {
               return AnimationConfiguration.staggeredList(
                 position: index,

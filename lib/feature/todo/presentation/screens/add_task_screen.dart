@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/constant/app_colors.dart';
 import 'package:todo_app/constant/app_textStyle.dart';
+import 'package:todo_app/core/format/format_helper.dart';
 import 'package:todo_app/core/layout/app_layout.dart';
 import 'package:todo_app/feature/todo/data/model/task_model.dart';
 import 'package:todo_app/feature/todo/presentation/provider/provider.dart';
@@ -86,7 +87,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
             ),
             MyTextFormFiled(
                 subTitle: 'Date',
-                hint: DateFormat.yMd().format(_selectDate),
+                hint: _selectDate.yMdFormat,
                 widget: IconButton(
                     onPressed: () {
                       _getDate(context);
@@ -100,14 +101,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 Expanded(
                   child: MyTextFormFiled(
                     subTitle: 'Start Time',
-                    hint: DateFormat("hh:mm a")
-                        .format(DateTime(
-                            _selectDate.year,
-                            _selectDate.month,
-                            _selectDate.day,
-                            _startTime.hour,
-                            _startTime.minute))
-                        .toString(),
+                    hint: DateTime(_selectDate.year, _selectDate.month,
+                            _selectDate.day, _startTime.hour, _startTime.minute)
+                        .hourMinuteFormat,
                     widget: IconButton(
                         onPressed: () {
                           _getTime(isStartTime: true);
@@ -121,10 +117,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 Expanded(
                   child: MyTextFormFiled(
                     subTitle: 'End Time',
-                    hint: DateFormat("hh:mm a")
-                        .format(DateTime(_selectDate.year, _selectDate.month,
-                            _selectDate.day, _endTime.hour, _endTime.minute))
-                        .toString(),
+                    hint: DateTime(_selectDate.year, _selectDate.month,
+                            _selectDate.day, _endTime.hour, _endTime.minute)
+                        .hourMinuteFormat,
                     widget: IconButton(
                         onPressed: () {
                           _getTime(isStartTime: false);
@@ -242,14 +237,10 @@ class _AddTaskPageState extends State<AddTaskPage> {
       title: titleController.text,
       note: noteController.text,
       date: _selectDate.toString(),
-      startTime: DateFormat("hh:mm a")
-          .format(DateTime(_selectDate.year, _selectDate.month, _selectDate.day,
-              _startTime.hour, _startTime.minute))
-          .toString(),
-      endTime: DateFormat("hh:mm a")
-          .format(DateTime(_selectDate.year, _selectDate.month, _selectDate.day,
-              _endTime.hour, _endTime.minute))
-          .toString(),
+      startTime: DateTime(_selectDate.year, _selectDate.month, _selectDate.day,
+              _startTime.hour, _startTime.minute).hourMinuteFormat,
+      endTime: DateTime(_selectDate.year, _selectDate.month, _selectDate.day,
+              _endTime.hour, _endTime.minute).hourMinuteFormat,
       remind: _selectedRemind,
       repeat: _selectedRepeat,
       color: selectedColor,
