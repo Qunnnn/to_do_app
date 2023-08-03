@@ -50,7 +50,7 @@ class TaskTile extends StatelessWidget {
                   height: AppLayout.getHeight(context: context, pixel: 7),
                 ),
                 Text(
-                  task.date!,
+                  task.note!,
                   style: AppTextStyle.contentStyle,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
